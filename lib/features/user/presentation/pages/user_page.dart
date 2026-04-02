@@ -16,7 +16,10 @@ class UserPage extends ConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title:  AppIcon.icon(Icons.arrow_back),
+        automaticallyImplyLeading: false,
+        title:  AppIcon.icon(Icons.arrow_back_ios,onTap: () {
+          Navigator.pop(context);
+        },),
       ),
       body: usersAsync.when(
         loading: () => const Center(child: CustomLoader(color: Colors.deepPurple,size: 60,borderWidth: 90,)),
