@@ -32,7 +32,7 @@ class UserPage extends ConsumerWidget {
               final user = users[index];
               return ListTile(
                 title: Text(user.name),
-                subtitle: Text(user.email, style: TextStyle(fontSize: AppResponsive.wp(10)),),
+                subtitle: Text(user.email, style: TextStyle(fontSize: AppResponsive.wp(5)),),
               );
             },
           );
