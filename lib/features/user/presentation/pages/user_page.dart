@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:freezed_riverpod_clean_architecture_fast_dev/core/ui/context_extension.dart';
 import 'package:freezed_riverpod_clean_architecture_fast_dev/features/common/presentation/components/app_loader.dart';
 import 'package:freezed_riverpod_clean_architecture_fast_dev/features/common/presentation/components/custom_loader.dart';
 
@@ -31,7 +32,7 @@ class UserPage extends ConsumerWidget {
               final user = users[index];
               return ListTile(
                 title: Text(user.name),
-                subtitle: Text(user.email),
+                subtitle: Text(user.email, style: TextStyle(fontSize: context.responsive.sp(20)),),
               );
             },
           );
