@@ -1,0 +1,51 @@
+Mera Poster: AppLocalizations & I18n Guide
+This document explains how the Multi-Language (Internationalization) system works in the Mera Poster project. Use this as a reference whenever you need to add or modify text.
+
+1. Project Architecture
+The system is split into Source Files (which we edit) and Generated Files (which the machine handles).
+
+Source Files (lib/l10n/)
+app_en.arb: The main English dictionary.
+app_hi.arb, etc.: The translated versions.
+TIP
+
+Always add a new key to app_en.arb first.
+
+Generated Files (lib/generated/)
+app_localizations.dart: The base class and manager.
+app_localizations_en.dart: The code version of your English dictionary.
+app_localizations_hi.dart: The code version of your Hindi dictionary.
+2. Dev Workflow (Step-by-Step)
+If you want to add a new text, say "Welcome Back":
+
+Step 1: Open lib/l10n/app_en.arb.
+Step 2: Add the key and value:
+json
+"welcomeBack": "Welcome Back"
+Step 3: Open your target language file (e.g., app_hi.arb) and add the translation:
+json
+"welcomeBack": "वापस स्वागत है"
+Step 4: Save and Build. Flutter will automatically generate the code.
+Step 5: Use it in your widget:
+dart
+Text(AppLocalizations.of(context)!.welcomeBack)
+3. Key Concepts
+Why use AppLocalizations.of(context)?
+Reactive: If the user changes the app language, the text updates automatically without a restart.
+Type-Safe: If you mistype welcomeBack, the compiler will give an error immediately.
+The Delegate
+Located at the bottom of app_localizations.dart, the lookupAppLocalizations function is the "brain." It checks the system locale (en, hi, etc.) and returns the correct class.
+
+4. Hinglish Quick Summary (Cheat Sheet)
+.arb file: Aapki asli dictionary hai. Text yahin likhna hai.
+Base Class: Contract hai jo batata hai kaunse words available hain.
+of(context): App ko bolta hai ki "Abhi wali language me ye word dikhao."
+Naya text add karna hai?: Pehle .arb me dalo, phir code me AppLocalizations.of(context)!.key use karo.
+5. Troubleshooting
+WARNING
+
+If your new keys are not showing up in the code:
+
+Run flutter gen-l10n in the terminal.
+Or simply "Save All" and let the IDE plugin handle it.
+Ensure the key name is identical (case-sensitive) in all .arb files.
