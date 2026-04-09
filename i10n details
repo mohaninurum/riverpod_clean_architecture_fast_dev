@@ -1,4 +1,4 @@
-Mera Poster: AppLocalizations & I18n Guide
+ AppLocalizations & I18n Guide
 This document explains how the Multi-Language (Internationalization) system works in the Mera Poster project. Use this as a reference whenever you need to add or modify text.
 
 1. Project Architecture
